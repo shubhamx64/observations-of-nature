@@ -3,19 +3,25 @@ import Layout from '../layouts/Layout.astro';
 import ArtworkCard from '../components/ArtworkCard.astro';
 import { getArtworks } from '../lib/artwork';
 const artworks = await getArtworks();
-const categories = [...new Set(artworks.map(a => a.data.category))].sort();
+// Filters appear only once at least two categories each hold two or more paintings.
+// A category with a single work is still shown on its page; it just makes a poor filter.
+const counts = new Map<string, number>();
+for (const { data } of artworks) counts.set(data.category, (counts.get(data.category) || 0) + 1);
+const categories = [...counts].filter(([, n]) => n >= 2).map(([category]) => category).sort();
+const showFilters = categories.length >= 2;
+const cardSizes = '(min-width: 1600px) 680px, (min-width: 1000px) 45vw, (min-width: 560px) 46vw, 92vw';
 ---
 <Layout title="Gallery" description="Explore the collection of hand-painted flowers, foliage, and trees. Every painting has room to be seen.">
   <section class="wrap gallery-section">
     <header class="page-heading"><p class="eyebrow">The collection</p><h1>A world in bloom.</h1><p>A few moments from nature, held in colour.</p></header>
     <div class="gallery-toolbar">
-      <div class="gallery-filters" role="group" aria-label="Filter paintings" hidden>
+      {showFilters && <div class="gallery-filters" role="group" aria-label="Filter paintings" hidden>
         <button type="button" data-filter="" aria-pressed="true">All works</button>
         {categories.map(category => <button type="button" data-filter={category} aria-pressed="false">{category}</button>)}
-      </div>
+      </div>}
       <p id="gallery-count" role="status" aria-live="polite">{artworks.length} works</p>
     </div>
-    <div class="artwork-grid" id="gallery-grid">{artworks.map((artwork, index) => <ArtworkCard artwork={artwork} index={index} eager={index < 3} headingLevel="h2" />)}</div>
+    <div class="artwork-grid" id="gallery-grid">{artworks.map((artwork, index) => <ArtworkCard artwork={artwork} index={index} eager={index < 2} headingLevel="h2" sizes={cardSizes} />)}</div>
     {artworks.length === 0 && <p>The first paintings will be shared here soon.</p>}
     {artworks.some(a => a.data.provisionalTitle) && <p class="catalogue-note">The collection is being catalogued. Some titles are descriptive working titles.</p>}
   </section>

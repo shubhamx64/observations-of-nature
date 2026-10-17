@@ -19,18 +19,18 @@ const socialImage = hero ? await getImage({src: hero.data.image, width: Math.min
       <h1 id="home-title">{site.home.heading.split('\n').map((line, i) => <>{i > 0 && <br />}{i > 0 ? <em>{line}</em> : line}</>)}</h1>
       <p class="hero-intro">{site.home.intro}</p>
       <a href={sitePath('/gallery/')} class="text-link">Explore the paintings <span aria-hidden="true">↗</span></a>
-      <span class="hero-footnote">An ongoing collection</span>
+      <span class="hero-footnote">An ongoing collection · {artworks.length} {artworks.length === 1 ? 'work' : 'works'}</span>
     </div>
     {hero && <figure class="hero-art">
       <a href={artworkUrl(hero)} aria-label={`View ${hero.data.title}`}>
-        <ArtworkImage image={hero.data.image} crop={hero.data.crop} alt={artworkAlt(hero)} eager sizes="(min-width: 1100px) 440px, (min-width: 700px) 42vw, 80vw" />
+        <ArtworkImage image={hero.data.image} crop={hero.data.crop} alt={artworkAlt(hero)} eager sizes="(min-width: 1600px) 640px, (min-width: 1000px) 580px, (min-width: 560px) 50vw, 92vw" />
       </a>
       <figcaption><span>{hero.data.title}</span><span>{hero.data.category}</span></figcaption>
     </figure>}
   </section>
   <section class="selected-section wrap" aria-labelledby="selected-title">
     <div class="section-heading"><div><p class="eyebrow">From the collection</p><h2 id="selected-title">Selected works</h2></div><a href={sitePath('/gallery/')} class="text-link">View all {artworks.length} works <span aria-hidden="true">↗</span></a></div>
-    <div class="artwork-grid selected-grid">{selected.slice(1, 4).map((artwork, index) => <ArtworkCard artwork={artwork} index={index} />)}</div>
+    <div class="artwork-grid trio-grid selected-grid">{selected.slice(1, 4).map((artwork, index) => <ArtworkCard artwork={artwork} index={index} />)}</div>
     {artworks.length === 0 && <p>The first paintings will be shared here soon.</p>}
   </section>
   <section class="home-note wrap">

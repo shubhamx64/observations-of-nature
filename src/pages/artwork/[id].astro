@@ -3,6 +3,7 @@ import { getImage } from 'astro:assets';
 import { render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import ArtworkImage from '../../components/ArtworkImage.astro';
+import ArtworkCard from '../../components/ArtworkCard.astro';
 import { getArtworks, artworkUrl, artworkAlt } from '../../lib/artwork';
 import site from '../../content/site.json';
 import ArtworkFrame from '../../components/ArtworkFrame.astro';
@@ -10,9 +11,13 @@ import { sitePath } from '../../lib/url';
 
 export async function getStaticPaths() {
   const artworks = await getArtworks();
-  return artworks.map((artwork, index) => ({ params: { id: artwork.id }, props: { artwork, previous: artworks[index - 1], next: artworks[index + 1] } }));
+  return artworks.map((artwork, index) => {
+    // The three paintings that follow this one in gallery order, wrapping around at the end.
+    const related = artworks.length > 1 ? [1, 2, 3].map(step => artworks[(index + step) % artworks.length]).filter(a => a.id !== artwork.id) : [];
+    return { params: { id: artwork.id }, props: { artwork, previous: artworks[index - 1], next: artworks[index + 1], related: [...new Set(related)], total: artworks.length } };
+  });
 }
-const { artwork, previous, next } = Astro.props;
+const { artwork, previous, next, related, total } = Astro.props;
 const { data } = artwork;
 const { Content } = await render(artwork);
 const fullImage = await getImage({ src: data.image, width: data.image.width, format: 'jpg', quality: 95 });
@@ -34,9 +39,9 @@ const schema = Astro.site ? {
     <div class="artwork-detail">
       <figure class="detail-figure">
         <a class="enlarge-link" href={fullImage.src} data-open-viewer aria-label={`Enlarge ${data.title}`}>
-          <ArtworkImage image={data.image} crop={data.crop} alt={artworkAlt(artwork)} eager large sizes="(min-width: 1100px) 650px, (min-width: 760px) 55vw, 90vw" />
+          <ArtworkImage image={data.image} crop={data.crop} alt={artworkAlt(artwork)} eager large sizes="(min-width: 1100px) 760px, (min-width: 760px) 58vw, 92vw" />
         </a>
-        <figcaption>View the painting <span aria-hidden="true">↗</span></figcaption>
+        <figcaption>Tap or click the painting to enlarge it</figcaption>
       </figure>
       <div class="detail-copy">
         <p class="eyebrow">{data.category}</p>
@@ -50,6 +55,10 @@ const schema = Astro.site ? {
       </div>
     </div>
     {data.additionalImages.length > 0 && <section class="additional-images" aria-label="More views of this painting">{data.additionalImages.map((view, index) => <ArtworkImage image={view.image} alt={view.alt || `${data.title}, additional view ${index + 1}`} large />)}</section>}
+    {related.length > 0 && <section class="related-section" aria-labelledby="related-title">
+      <div class="section-heading"><div><p class="eyebrow">Keep looking</p><h2 id="related-title">More from the collection</h2></div><a href={sitePath('/gallery/')} class="text-link">View all {total} works <span aria-hidden="true">↗</span></a></div>
+      <div class="artwork-grid trio-grid">{related.map(item => <ArtworkCard artwork={item} />)}</div>
+    </section>}
     <nav class="artwork-pagination" aria-label="More paintings">
       <div>{previous && <a href={artworkUrl(previous)}><span>← Previous painting</span><strong>{previous.data.title}</strong></a>}</div>
       <div>{next && <a href={artworkUrl(next)}><span>Next painting →</span><strong>{next.data.title}</strong></a>}</div>

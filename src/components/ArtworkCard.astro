@@ -3,13 +3,14 @@ import type { Artwork } from '../lib/artwork';
 import { artworkUrl, artworkAlt } from '../lib/artwork';
 import ArtworkImage from './ArtworkImage.astro';
 
-interface Props { artwork: Artwork; index?: number; eager?: boolean; headingLevel?: 'h2' | 'h3'; }
-const { artwork, index, eager = false, headingLevel: Heading = 'h3' } = Astro.props;
+interface Props { artwork: Artwork; index?: number; eager?: boolean; headingLevel?: 'h2' | 'h3'; sizes?: string; }
+// Default sizes suit the three-column rows; the two-column gallery passes its own.
+const { artwork, index, eager = false, headingLevel: Heading = 'h3', sizes = '(min-width: 1000px) 420px, (min-width: 760px) 30vw, 92vw' } = Astro.props;
 ---
 <article class="artwork-card" data-category={artwork.data.category}>
   <a href={artworkUrl(artwork)} class="artwork-link">
     <div class="artwork-image">
-      <ArtworkImage image={artwork.data.image} crop={artwork.data.crop} alt={artworkAlt(artwork)} eager={eager} />
+      <ArtworkImage image={artwork.data.image} crop={artwork.data.crop} alt={artworkAlt(artwork)} eager={eager} sizes={sizes} />
     </div>
     <div class="artwork-caption">
       <div>
