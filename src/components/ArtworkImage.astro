@@ -1,0 +1,34 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import ArtworkFrame from './ArtworkFrame.astro';
+import type { ArtworkCrop } from '../lib/artwork';
+
+interface Props {
+  image: ImageMetadata;
+  alt: string;
+  sizes?: string;
+  eager?: boolean;
+  large?: boolean;
+  crop?: ArtworkCrop;
+}
+
+const { image, alt, sizes = '(min-width: 1000px) 30vw, (min-width: 640px) 45vw, 90vw', eager = false, large = false, crop } = Astro.props;
+const maxWidth = Math.min(image.width, large ? 1920 : 1200);
+const widths = [...new Set([360, 640, 960, 1200, ...(large ? [1600, 1920] : []), maxWidth].filter(w => w <= maxWidth))];
+---
+<ArtworkFrame image={image} crop={crop}>
+<Picture
+  src={image}
+  alt={alt}
+  formats={['webp']}
+  fallbackFormat="jpg"
+  quality={90}
+  width={maxWidth}
+  widths={widths}
+  sizes={sizes}
+  loading={eager ? 'eager' : 'lazy'}
+  fetchpriority={eager ? 'high' : 'auto'}
+  decoding="async"
+/>
+</ArtworkFrame>

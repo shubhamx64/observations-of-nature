@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../content/site.json';
+import { sitePath } from '../lib/url';
+---
+<Layout title="Contact" description={site.contact.intro}>
+  <section class="wrap contact-page">
+    <p class="eyebrow">A little conversation</p>
+    <h1>Say <em>hello.</em></h1>
+    <p class="contact-intro">{site.contact.intro}</p>
+    {site.contact.email ? <a class="contact-email" href={`mailto:${site.contact.email}`}>{site.contact.email} <span aria-hidden="true">↗</span></a> : <p class="contact-pending">{site.contact.unconfiguredMessage}</p>}
+    {site.contact.instagram && <p><a class="text-link" href={site.contact.instagram} target="_blank" rel="noopener noreferrer">Find me on Instagram <span class="sr-only">(opens in a new tab)</span><span aria-hidden="true">↗</span></a></p>}
+    <a class="text-link contact-gallery" href={sitePath('/gallery/')}>Back to the paintings <span aria-hidden="true">↗</span></a>
+  </section>
+</Layout>

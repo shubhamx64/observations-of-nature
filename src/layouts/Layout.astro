@@ -1,0 +1,51 @@
+---
+import site from '../content/site.json';
+import '../styles/global.css';
+import { sitePath } from '../lib/url';
+interface Props { title?: string; description?: string; image?: string; noindex?: boolean; }
+const { title, description = site.description, image, noindex = false } = Astro.props;
+const pageTitle = title ? `${title} — ${site.title}` : site.title;
+const path = Astro.url.pathname;
+const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
+const socialImage = image && Astro.site ? new URL(image, Astro.site).href : undefined;
+const nav = [ { href: '/gallery/', label: 'Gallery' }, { href: '/about/', label: 'About' }, { href: '/contact/', label: 'Contact' } ];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f5ef" />
+    {(!Astro.site || noindex) && <meta name="robots" content="noindex, nofollow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    <meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
+    <link rel="icon" type="image/svg+xml" href={sitePath('/favicon.svg')} />
+    {Astro.site && <link rel="sitemap" href={sitePath('/sitemap.xml')} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href={sitePath('/')} aria-label={`${site.title} — Home`}>
+        <svg class="brand-mark" viewBox="0 0 40 48" fill="none" aria-hidden="true"><path d="M20 43V20m0 13C7 34 5 23 6 19c9-1 14 4 14 14Zm0-8c12 1 15-10 14-14-9 0-14 5-14 14Zm0-5C10 15 13 6 18 3c7 6 8 13 2 17Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/></svg>
+        <span>{site.title}<small>Paintings & observations</small></span>
+      </a>
+      <nav aria-label="Main navigation">
+        {nav.map(({href, label}) => <a href={sitePath(href)} aria-current={path === sitePath(href) ? 'page' : label === 'Gallery' && path.startsWith(sitePath('/artwork/')) ? 'true' : undefined}>{label}</a>)}
+      </nav>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer wrap">
+      <a class="footer-title" href={sitePath('/')}>{site.title}</a>
+      <span>Made by hand. Shared with care.</span>
+      <small>© {new Date().getFullYear()} {site.artistName || site.title}</small>
+    </footer>
+  </body>
+</html>

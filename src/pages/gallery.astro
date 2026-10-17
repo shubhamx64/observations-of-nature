@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArtworkCard from '../components/ArtworkCard.astro';
+import { getArtworks } from '../lib/artwork';
+const artworks = await getArtworks();
+const categories = [...new Set(artworks.map(a => a.data.category))].sort();
+---
+<Layout title="Gallery" description="Explore the collection of hand-painted flowers, foliage, and trees. Every painting has room to be seen.">
+  <section class="wrap gallery-section">
+    <header class="page-heading"><p class="eyebrow">The collection</p><h1>A world in bloom.</h1><p>A few moments from nature, held in colour.</p></header>
+    <div class="gallery-toolbar">
+      <div class="gallery-filters" role="group" aria-label="Filter paintings" hidden>
+        <button type="button" data-filter="" aria-pressed="true">All works</button>
+        {categories.map(category => <button type="button" data-filter={category} aria-pressed="false">{category}</button>)}
+      </div>
+      <p id="gallery-count" role="status" aria-live="polite">{artworks.length} works</p>
+    </div>
+    <div class="artwork-grid" id="gallery-grid">{artworks.map((artwork, index) => <ArtworkCard artwork={artwork} index={index} eager={index < 3} headingLevel="h2" />)}</div>
+    {artworks.length === 0 && <p>The first paintings will be shared here soon.</p>}
+    {artworks.some(a => a.data.provisionalTitle) && <p class="catalogue-note">The collection is being catalogued. Some titles are descriptive working titles.</p>}
+  </section>
+</Layout>
+<script>
+  const filters = document.querySelector<HTMLElement>('.gallery-filters');
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const cards = [...document.querySelectorAll<HTMLElement>('#gallery-grid .artwork-card')];
+  const count = document.querySelector('#gallery-count');
+  if (filters) filters.hidden = false;
+  function applyFilter(category: string) {
+    let visible = 0;
+    cards.forEach(card => { card.hidden = !!category && card.dataset.category !== category; if (!card.hidden) visible++; });
+    buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === category)));
+    if (count) count.textContent = `${visible} ${visible === 1 ? 'work' : 'works'}`;
+  }
+  function readFilter() {
+    const value = new URL(location.href).searchParams.get('category') || '';
+    applyFilter(buttons.some(b => b.dataset.filter === value) ? value : '');
+  }
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const category = button.dataset.filter || '';
+    const url = new URL(location.href);
+    if (category) url.searchParams.set('category', category); else url.searchParams.delete('category');
+    history.pushState({}, '', url);
+    applyFilter(category);
+  }));
+  window.addEventListener('popstate', readFilter);
+  readFilter();
+</script>

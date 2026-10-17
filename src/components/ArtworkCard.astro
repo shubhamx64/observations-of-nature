@@ -1,0 +1,22 @@
+---
+import type { Artwork } from '../lib/artwork';
+import { artworkUrl, artworkAlt } from '../lib/artwork';
+import ArtworkImage from './ArtworkImage.astro';
+
+interface Props { artwork: Artwork; index?: number; eager?: boolean; headingLevel?: 'h2' | 'h3'; }
+const { artwork, index, eager = false, headingLevel: Heading = 'h3' } = Astro.props;
+---
+<article class="artwork-card" data-category={artwork.data.category}>
+  <a href={artworkUrl(artwork)} class="artwork-link">
+    <div class="artwork-image">
+      <ArtworkImage image={artwork.data.image} crop={artwork.data.crop} alt={artworkAlt(artwork)} eager={eager} />
+    </div>
+    <div class="artwork-caption">
+      <div>
+        <Heading>{artwork.data.title}</Heading>
+        <p>{[artwork.data.medium || artwork.data.category, artwork.data.year].filter(Boolean).join(' · ')}</p>
+      </div>
+      {index !== undefined && <span class="artwork-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>}
+    </div>
+  </a>
+</article>

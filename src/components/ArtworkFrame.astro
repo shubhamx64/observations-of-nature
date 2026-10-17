@@ -1,0 +1,13 @@
+---
+import type { ImageMetadata } from 'astro';
+import type { ArtworkCrop } from '../lib/artwork';
+
+interface Props { image: ImageMetadata; crop?: ArtworkCrop; }
+const { image, crop } = Astro.props;
+const frame = crop || { x: 0, y: 0, width: image.width, height: image.height };
+const style = `--frame-ratio:${frame.width / frame.height};--photo-width:${100 * image.width / frame.width}%;--photo-x:${-100 * frame.x / image.width}%;--photo-y:${-100 * frame.y / image.height}%`;
+---
+<!-- A reversible display window. The image file and its colours remain untouched. -->
+<div class:list={['artwork-frame', { 'has-crop': !!crop }]} style={style}>
+  <slot />
+</div>

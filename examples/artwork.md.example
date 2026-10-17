@@ -1,0 +1,24 @@
+---
+# EXAMPLE ONLY — not part of the live collection.
+# Copy to src/content/artwork/your-stable-slug.md and supply the real image.
+title: "Monsoon"
+image: "../../assets/artwork/monsoon.jpg"
+alt: "Describe the painting's visible shapes, subjects and colours."
+# Optional, only when you have explicitly asked for a crop. Original-image pixel coordinates:
+# crop: { x: 20, y: 40, width: 1100, height: 1400 }
+# All fields below are optional. Keep only information supplied by the artist.
+year: 2026
+medium: "Acrylic on canvas"
+dimensions: "24 × 36 inches"
+description: "The artist's own description can go here."
+category: "Landscapes"
+featured: false
+displayOrder: 170
+# available: true
+# price: "USD 250"
+# additionalImages:
+#   - image: "../../assets/artwork/monsoon-detail.jpg"
+#     alt: "A close view of the brushwork, supplied by the artist."
+---
+
+Optional longer notes in the artist's own words.
