@@ -114,10 +114,12 @@
   /* Every card gets the same 3:4 cell. The painting keeps its own proportions, sits on the cell's
      bottom edge and is never cropped, so captions across a row share one baseline. */
   .artwork-image { aspect-ratio: 3 / 4; container-type: size; display: grid; align-items: end; justify-items: center; }
-  .artwork-image .artwork-frame { width: min(100%, calc((100cqh - 2 * var(--frame-rail)) * var(--frame-ratio) + 2 * var(--frame-rail))); }
+  .artwork-image .artwork-frame { width: min(100%, calc((100cqh - 2 * var(--frame-rail)) * var(--frame-ratio) + 2 * var(--frame-rail)), calc(var(--frame-image-width) + 2 * var(--frame-rail))); }
   .artwork-image img { width: 100%; }
-  .artwork-frame { --frame-rail: clamp(8px, 1.15vw, 14px); width: 100%; padding: var(--frame-rail); background: repeating-linear-gradient(174deg, transparent 0 5px, rgb(255 229 178 / .08) 6px, transparent 8px), linear-gradient(135deg, #946337 0%, #c28b4c 18%, #80502c 38%, #b77d40 57%, #754627 78%, #a9753d 100%); box-shadow: inset 0 0 0 1px #e2bd80, inset 0 0 0 3px #6e4226, inset 0 0 0 4px rgb(255 228 175 / .58), 0 2px 8px rgb(47 34 20 / .2); }
+  .artwork-frame { --frame-rail: clamp(8px, 1.15vw, 14px); --wood-light: #c28b4c; --wood-mid: #946337; --wood-deep: #754627; --wood-grain: rgb(255 229 178 / .08); --wood-inlay: #e2bd80; --wood-highlight: rgb(255 228 175 / .58); width: min(100%, calc(var(--frame-image-width) + 2 * var(--frame-rail))); padding: var(--frame-rail); background: repeating-linear-gradient(174deg, transparent 0 5px, var(--wood-grain) 6px, transparent 8px), linear-gradient(135deg, var(--wood-mid) 0%, var(--wood-light) 18%, var(--wood-deep) 38%, #b77d40 57%, #754627 78%, #a9753d 100%); box-shadow: inset 0 0 0 1px var(--wood-inlay), inset 0 0 0 3px var(--wood-deep), inset 0 0 0 4px var(--wood-highlight), 0 2px 8px rgb(47 34 20 / .2); }
+  .artwork-frame--green { --wood-light: #718456; --wood-mid: #526748; --wood-deep: #283b2b; --wood-grain: rgb(238 247 202 / .1); --wood-inlay: #c1b17b; --wood-highlight: rgb(228 239 194 / .58); }
   .artwork-frame__opening { width: 100%; background: #eeece4; box-shadow: 0 0 0 1px rgb(53 36 21 / .35); }
+  .artwork-frame__opening img { width: 100%; }
   .artwork-frame.has-crop .artwork-frame__opening { position: relative; overflow: hidden; aspect-ratio: var(--frame-ratio); }
   .artwork-frame.has-crop img { position: absolute; inset: 0 auto auto 0; width: var(--photo-width); max-width: none; height: auto; transform: translate(var(--photo-x), var(--photo-y)); }
   .artwork-caption { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; }
@@ -152,7 +154,7 @@
   .viewer-toolbar button { border: 1px solid var(--line); padding: 8px 14px; min-height: 44px; background: transparent; font-family: var(--sans); font-size: 13px; }
   .viewer-toolbar button span { font-size: 20px; margin-left: 15px; }
   .viewer-image-area { flex: 1; min-height: 0; width: 100%; display: grid; place-items: center; }
-  .viewer-image-area .artwork-frame { width: min(100%, calc((95dvh - 160px - 2 * var(--frame-rail)) * var(--frame-ratio) + 2 * var(--frame-rail))); }
+  .viewer-image-area .artwork-frame { width: min(100%, calc((95dvh - 160px - 2 * var(--frame-rail)) * var(--frame-ratio) + 2 * var(--frame-rail)), calc(var(--frame-image-width) + 2 * var(--frame-rail))); }
   .viewer-image-area img { width: 100%; height: auto; }
   .image-viewer > a { font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
   .viewer-open { overflow: hidden; }

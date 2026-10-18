@@ -10,6 +10,6 @@ const artwork = artworks.find(a => a.id === 'blue-flowers') || artworks[0];
 <Layout title="About" description="A space for hand-painted flowers, quiet studies of leaves, and the pleasure of paying attention.">
   <section class="wrap editorial-page">
     <div class="editorial-copy"><p class="eyebrow">Behind the paintings</p><h1>Taking time<br /><em>to notice.</em></h1><div class="prose"><Content /></div><a class="text-link" href={sitePath('/gallery/')}>Spend time with the paintings <span aria-hidden="true">↗</span></a></div>
-    {artwork && <figure class="editorial-art"><ArtworkImage image={artwork.data.image} crop={artwork.data.crop} alt={artworkAlt(artwork)} eager sizes="(min-width: 900px) 430px, 85vw" /><figcaption>{artwork.data.title}</figcaption></figure>}
+    {artwork && <figure class="editorial-art"><ArtworkImage image={artwork.data.image} crop={artwork.data.crop} frameStyle={artwork.data.frameStyle} alt={artworkAlt(artwork)} eager sizes="(min-width: 900px) 430px, 85vw" /><figcaption>{artwork.data.title}</figcaption></figure>}
   </section>
 </Layout>

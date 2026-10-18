@@ -11,13 +11,14 @@ interface Props {
   eager?: boolean;
   large?: boolean;
   crop?: ArtworkCrop;
+  frameStyle?: 'wood' | 'green';
 }
 
-const { image, alt, sizes = '(min-width: 1000px) 30vw, (min-width: 640px) 45vw, 90vw', eager = false, large = false, crop } = Astro.props;
+const { image, alt, sizes = '(min-width: 1000px) 30vw, (min-width: 640px) 45vw, 90vw', eager = false, large = false, crop, frameStyle = 'wood' } = Astro.props;
 const maxWidth = Math.min(image.width, large ? 1920 : 1200);
 const widths = [...new Set([360, 640, 960, 1200, ...(large ? [1600, 1920] : []), maxWidth].filter(w => w <= maxWidth))];
 ---
-<ArtworkFrame image={image} crop={crop}>
+<ArtworkFrame image={image} crop={crop} frameStyle={frameStyle}>
 <Picture
   src={image}
   alt={alt}

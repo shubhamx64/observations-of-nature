@@ -10,7 +10,7 @@ const { artwork, index, eager = false, headingLevel: Heading = 'h3', sizes = '(m
 <article class="artwork-card" data-category={artwork.data.category}>
   <a href={artworkUrl(artwork)} class="artwork-link">
     <div class="artwork-image">
-      <ArtworkImage image={artwork.data.image} crop={artwork.data.crop} alt={artworkAlt(artwork)} eager={eager} sizes={sizes} />
+      <ArtworkImage image={artwork.data.image} crop={artwork.data.crop} frameStyle={artwork.data.frameStyle} alt={artworkAlt(artwork)} eager={eager} sizes={sizes} />
     </div>
     <div class="artwork-caption">
       <div>

@@ -23,7 +23,7 @@ const socialImage = hero ? await getImage({src: hero.data.image, width: Math.min
     </div>
     {hero && <figure class="hero-art">
       <a href={artworkUrl(hero)} aria-label={`View ${hero.data.title}`}>
-        <ArtworkImage image={hero.data.image} crop={hero.data.crop} alt={artworkAlt(hero)} eager sizes="(min-width: 1600px) 640px, (min-width: 1000px) 580px, (min-width: 560px) 50vw, 92vw" />
+        <ArtworkImage image={hero.data.image} crop={hero.data.crop} frameStyle={hero.data.frameStyle} alt={artworkAlt(hero)} eager sizes="(min-width: 1600px) 640px, (min-width: 1000px) 580px, (min-width: 560px) 50vw, 92vw" />
       </a>
       <figcaption><span>{hero.data.title}</span><span>{hero.data.category}</span></figcaption>
     </figure>}
