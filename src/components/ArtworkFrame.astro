@@ -2,12 +2,12 @@
 import type { ImageMetadata } from 'astro';
 import type { ArtworkCrop } from '../lib/artwork';
 
-interface Props { image: ImageMetadata; crop?: ArtworkCrop; frameStyle?: 'wood' | 'green'; }
+interface Props { image: ImageMetadata; crop?: ArtworkCrop; frameStyle?: 'wood' | 'green' | 'navyCream'; }
 const { image, crop, frameStyle = 'wood' } = Astro.props;
 const frame = crop || { x: 0, y: 0, width: image.width, height: image.height };
 const style = `--frame-ratio:${frame.width / frame.height};--frame-image-width:${frame.width}px;--photo-width:${100 * image.width / frame.width}%;--photo-x:${-100 * frame.x / image.width}%;--photo-y:${-100 * frame.y / image.height}%`;
 ---
 <!-- A reversible display window. The image file and its colours remain untouched. -->
-<div class:list={['artwork-frame', { 'has-crop': !!crop, 'artwork-frame--green': frameStyle === 'green' }]} style={style}>
+<div class:list={['artwork-frame', { 'has-crop': !!crop, 'artwork-frame--green': frameStyle === 'green', 'artwork-frame--navy-cream': frameStyle === 'navyCream' }]} style={style}>
   <div class="artwork-frame__opening"><slot /></div>
 </div>
