@@ -6,8 +6,6 @@ Observations of Nature is a growing collection of hand-painted works: flowers in
 
 This is a space to spend a little time with them. To notice a brushstroke, a shape, or a familiar colour seen afresh.
 
-<!-- PLACEHOLDER: Replace the following section with the artist's own words. Do not invent a biography. -->
+## About The Artist
 
-## A note from the artist
-
-The artist's story will be added here soon.
+I paint, write poems and I am a nature lover. Nothing is more beautiful than nature.
