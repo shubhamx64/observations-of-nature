@@ -9,5 +9,5 @@ const style = `--frame-ratio:${frame.width / frame.height};--photo-width:${100 *
 ---
 <!-- A reversible display window. The image file and its colours remain untouched. -->
 <div class:list={['artwork-frame', { 'has-crop': !!crop }]} style={style}>
-  <slot />
+  <div class="artwork-frame__opening"><slot /></div>
 </div>
