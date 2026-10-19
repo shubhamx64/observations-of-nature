@@ -36,7 +36,7 @@ const schema = Astro.site ? {
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />}
   <div class="wrap artwork-page">
     <a href={sitePath('/gallery/')} class="back-link"><span aria-hidden="true">←</span> Back to the gallery</a>
-    <div class="artwork-detail">
+    <div class:list={['artwork-detail', { 'artwork-detail--nature-project': data.frameStyle === 'natureProject' }]}>
       <figure class="detail-figure">
         <a class="enlarge-link" href={fullImage.src} data-open-viewer aria-label={`Enlarge ${data.title}`}>
           <ArtworkImage image={data.image} crop={data.crop} frameStyle={data.frameStyle} alt={artworkAlt(artwork)} eager large sizes="(min-width: 1100px) 760px, (min-width: 760px) 58vw, 92vw" />

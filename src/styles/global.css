@@ -123,6 +123,10 @@
   .artwork-frame--cocoa-brown { --wood-light: #9b7258; --wood-mid: #714c38; --wood-deep: #3e291f; --wood-accent: #80583f; --wood-shadow: #472e23; --wood-edge: #694632; --wood-grain: rgb(246 222 199 / .1); --wood-inlay: #c2a17f; --wood-highlight: rgb(248 227 204 / .5); }
   .artwork-frame--purple-cream { --frame-mat: clamp(14px, 4vw, 44px); --mat-color: #f4eddf; --wood-light: #9277a7; --wood-mid: #6c527f; --wood-deep: #382844; --wood-accent: #795f8d; --wood-shadow: #44304f; --wood-edge: #624875; --wood-grain: rgb(238 225 249 / .12); --wood-inlay: #cbb999; --wood-highlight: rgb(245 232 212 / .5); }
   .artwork-image .artwork-frame--purple-cream { --frame-mat: clamp(7px, 1vw, 13px); }
+  .artwork-frame--nature-project { --frame-rail: 2in; --frame-mat: 2in; --mat-color: #f3edde; }
+  .artwork-image .artwork-frame--nature-project { --frame-rail: clamp(8px, 1.15vw, 14px); --frame-mat: clamp(7px, 1vw, 13px); }
+  .artwork-detail--nature-project { grid-template-columns: 1fr; }
+  .artwork-detail--nature-project .detail-figure { max-width: none; }
   .artwork-frame__opening { width: 100%; padding: var(--frame-mat); background: var(--mat-color, #eeece4); box-shadow: 0 0 0 1px rgb(53 36 21 / .35); }
   .artwork-frame__opening img { width: 100%; }
   .artwork-frame.has-crop .artwork-frame__opening { position: relative; overflow: hidden; aspect-ratio: var(--frame-ratio); }
@@ -159,7 +163,8 @@
   .viewer-toolbar button { border: 1px solid var(--line); padding: 8px 14px; min-height: 44px; background: transparent; font-family: var(--sans); font-size: 13px; }
   .viewer-toolbar button span { font-size: 20px; margin-left: 15px; }
   .viewer-image-area { flex: 1; min-height: 0; width: 100%; display: grid; place-items: center; }
-  .viewer-image-area .artwork-frame { width: min(100%, calc((95dvh - 160px - 2 * var(--frame-rail)) * var(--frame-ratio) + 2 * var(--frame-rail)), calc(var(--frame-image-width) + 2 * var(--frame-rail))); }
+  .viewer-image-area .artwork-frame { width: min(100%, calc((95dvh - 160px - 2 * (var(--frame-rail) + var(--frame-mat))) * var(--frame-ratio) + 2 * (var(--frame-rail) + var(--frame-mat))), calc(var(--frame-image-width) + 2 * (var(--frame-rail) + var(--frame-mat)))); }
+  .viewer-image-area .artwork-frame--nature-project { --frame-rail: clamp(12px, 1.7vw, 24px); --frame-mat: clamp(12px, 2.2vw, 32px); }
   .viewer-image-area img { width: 100%; height: auto; }
   .image-viewer > a { font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
   .viewer-open { overflow: hidden; }
@@ -167,5 +172,6 @@
   .skip-link:focus { top: 20px; }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
   @media (max-width: 759px) { .wordmark { font-size: 20px; } .brand-mark { width: 25px; } .wordmark small { font-size: 9px; } }
+  @media (max-width: 759px) { .artwork-detail--nature-project .artwork-frame--nature-project { --frame-rail: clamp(10px, 3vw, 20px); --frame-mat: clamp(10px, 3vw, 20px); } }
   @media (max-width: 559px) { .wordmark { font-size: 25px; } .brand-mark { width: 29px; } .artwork-caption { gap: 6px; margin-top: 12px; } .artwork-caption :is(h2, h3) { font-size: 20px; } .artwork-number { display: none; } .gallery-filters { gap: 8px; } .gallery-filters button { padding-inline: 4px; font-size: 12px; } .viewer-toolbar { font-size: 17px; } .image-viewer { padding: 15px; } }
 }
