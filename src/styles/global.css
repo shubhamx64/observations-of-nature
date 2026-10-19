@@ -123,8 +123,8 @@
   .artwork-frame--cocoa-brown { --wood-light: #9b7258; --wood-mid: #714c38; --wood-deep: #3e291f; --wood-accent: #80583f; --wood-shadow: #472e23; --wood-edge: #694632; --wood-grain: rgb(246 222 199 / .1); --wood-inlay: #c2a17f; --wood-highlight: rgb(248 227 204 / .5); }
   .artwork-frame--purple-cream { --frame-mat: clamp(14px, 4vw, 44px); --mat-color: #f4eddf; --wood-light: #9277a7; --wood-mid: #6c527f; --wood-deep: #382844; --wood-accent: #795f8d; --wood-shadow: #44304f; --wood-edge: #624875; --wood-grain: rgb(238 225 249 / .12); --wood-inlay: #cbb999; --wood-highlight: rgb(245 232 212 / .5); }
   .artwork-image .artwork-frame--purple-cream { --frame-mat: clamp(7px, 1vw, 13px); }
-  .artwork-frame--nature-project { --frame-rail: 2in; --frame-mat: 2in; --mat-color: #f3edde; }
-  .artwork-image .artwork-frame--nature-project { --frame-rail: clamp(8px, 1.15vw, 14px); --frame-mat: clamp(7px, 1vw, 13px); }
+  .artwork-frame--nature-project { --frame-rail: 2in; --frame-mat: 2.5in; --mat-color: #f3edde; }
+  .artwork-image .artwork-frame--nature-project { --frame-rail: clamp(8px, 1.15vw, 14px); --frame-mat: clamp(16px, 1.6vw, 24px); }
   .artwork-detail--nature-project { grid-template-columns: 1fr; }
   .artwork-detail--nature-project .detail-figure { max-width: none; }
   .artwork-frame__opening { width: 100%; padding: var(--frame-mat); background: var(--mat-color, #eeece4); box-shadow: 0 0 0 1px rgb(53 36 21 / .35); }
