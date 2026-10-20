@@ -74,7 +74,7 @@
   .catalogue-note { color: var(--muted); font-size: 13px; margin-top: 65px; }
   .artwork-page { padding-block: 35px 50px; }
   .artwork-detail { display: grid; grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 7vw, 100px); margin-top: 38px; align-items: start; }
-  .detail-figure { width: 100%; max-width: 760px; }
+  .detail-figure { width: 100%; max-width: 760px; container-type: inline-size; }
   .detail-figure figcaption { color: var(--muted); font-size: 12px; text-align: right; margin-top: 12px; }
   .detail-copy { padding-top: 50px; }
   .detail-copy h1 { margin-block: 18px 12px; font-size: clamp(40px, 4.2vw, 60px); }
@@ -119,7 +119,7 @@
   .artwork-frame { --frame-rail: clamp(8px, 1.15vw, 14px); --frame-mat: 0px; --wood-light: #c28b4c; --wood-mid: #946337; --wood-deep: #754627; --wood-accent: #b77d40; --wood-shadow: #754627; --wood-edge: #a9753d; --wood-grain: rgb(255 229 178 / .08); --wood-inlay: #e2bd80; --wood-highlight: rgb(255 228 175 / .58); width: min(100%, calc(var(--frame-image-width) + 2 * (var(--frame-rail) + var(--frame-mat)))); padding: var(--frame-rail); background: repeating-linear-gradient(174deg, transparent 0 5px, var(--wood-grain) 6px, transparent 8px), linear-gradient(135deg, var(--wood-mid) 0%, var(--wood-light) 18%, var(--wood-deep) 38%, var(--wood-accent) 57%, var(--wood-shadow) 78%, var(--wood-edge) 100%); box-shadow: inset 0 0 0 1px var(--wood-inlay), inset 0 0 0 3px var(--wood-deep), inset 0 0 0 4px var(--wood-highlight), 0 2px 8px rgb(47 34 20 / .2); }
   .artwork-frame--cream-wood { --frame-mat: clamp(6px, .9vw, 12px); --mat-color: #f8f5ec; --wood-light: #faf6e9; --wood-mid: #e9dfcb; --wood-deep: #cabc9f; --wood-accent: #f5eddd; --wood-shadow: #d9c9ab; --wood-edge: #e3d4b8; --wood-grain: rgb(128 100 63 / .08); --wood-inlay: #bca984; --wood-highlight: rgb(255 253 247 / .78); }
   .artwork-frame--crimson-wood { --wood-light: #b84350; --wood-mid: #8e2737; --wood-deep: #4b1420; --wood-accent: #a83343; --wood-shadow: #561722; --wood-edge: #782433; --wood-grain: rgb(255 185 181 / .12); --wood-inlay: #d27b7c; --wood-highlight: rgb(255 214 207 / .56); }
-  .artwork-frame--navy-wood { --wood-light: #395781; --wood-mid: #263a5a; --wood-deep: #121f35; --wood-accent: #304a71; --wood-shadow: #172743; --wood-edge: #223858; --wood-grain: rgb(207 222 243 / .12); --wood-inlay: #8496ad; --wood-highlight: rgb(211 225 241 / .58); }
+  .artwork-frame--navy-wood { --frame-rail: clamp(10px, 14.5cqi, 112px); --wood-light: #395781; --wood-mid: #263a5a; --wood-deep: #121f35; --wood-accent: #304a71; --wood-shadow: #172743; --wood-edge: #223858; --wood-grain: rgb(207 222 243 / .12); --wood-inlay: #8496ad; --wood-highlight: rgb(211 225 241 / .58); }
   .artwork-frame--green { --wood-light: #718456; --wood-mid: #526748; --wood-deep: #283b2b; --wood-grain: rgb(238 247 202 / .1); --wood-inlay: #c1b17b; --wood-highlight: rgb(228 239 194 / .58); }
   .artwork-frame--navy-cream { --frame-mat: clamp(6px, .8vw, 10px); --mat-color: #f2ecd9; --wood-light: #536f91; --wood-mid: #304c70; --wood-deep: #172b49; --wood-accent: #3e5f84; --wood-shadow: #1b3151; --wood-edge: #395779; --wood-grain: rgb(221 235 249 / .12); --wood-inlay: #c5ad7c; --wood-highlight: rgb(234 221 187 / .55); }
   .artwork-frame--dark-green { --wood-light: #49634c; --wood-mid: #2c4932; --wood-deep: #14271a; --wood-accent: #38563d; --wood-shadow: #182d1e; --wood-edge: #304b35; --wood-grain: rgb(218 239 211 / .11); --wood-inlay: #a5a77a; --wood-highlight: rgb(220 232 197 / .48); }
