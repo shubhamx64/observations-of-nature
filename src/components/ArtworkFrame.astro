@@ -2,12 +2,12 @@
 import type { ImageMetadata } from 'astro';
 import type { ArtworkCrop } from '../lib/artwork';
 
-interface Props { image: ImageMetadata; crop?: ArtworkCrop; frameStyle?: 'wood' | 'creamWood' | 'crimsonWood' | 'navyWood' | 'green' | 'navyCream' | 'darkGreen' | 'cocoaBrown' | 'cocoaBrownWide' | 'leafGreenWide' | 'purpleCream' | 'whiteGreenWood'; }
+interface Props { image: ImageMetadata; crop?: ArtworkCrop; frameStyle?: 'wood' | 'creamWood' | 'crimsonWood' | 'navyWood' | 'green' | 'navyCream' | 'darkGreen' | 'cocoaBrown' | 'cocoaBrownWide' | 'leafGreenWide' | 'offWhiteWoodWide' | 'purpleCream' | 'whiteGreenWood'; }
 const { image, crop, frameStyle = 'wood' } = Astro.props;
 const frame = crop || { x: 0, y: 0, width: image.width, height: image.height };
 const style = `--frame-ratio:${frame.width / frame.height};--frame-image-width:${frame.width}px;--photo-width:${100 * image.width / frame.width}%;--photo-x:${-100 * frame.x / image.width}%;--photo-y:${-100 * frame.y / image.height}%`;
 ---
 <!-- A reversible display window. The image file and its colours remain untouched. -->
-<div class:list={['artwork-frame', { 'has-crop': !!crop, 'artwork-frame--cream-wood': frameStyle === 'creamWood', 'artwork-frame--crimson-wood': frameStyle === 'crimsonWood', 'artwork-frame--navy-wood': frameStyle === 'navyWood', 'artwork-frame--green': frameStyle === 'green', 'artwork-frame--navy-cream': frameStyle === 'navyCream', 'artwork-frame--dark-green': frameStyle === 'darkGreen', 'artwork-frame--cocoa-brown': frameStyle === 'cocoaBrown', 'artwork-frame--cocoa-brown-wide': frameStyle === 'cocoaBrownWide', 'artwork-frame--leaf-green-wide': frameStyle === 'leafGreenWide', 'artwork-frame--purple-cream': frameStyle === 'purpleCream', 'artwork-frame--white-green-wood': frameStyle === 'whiteGreenWood' }]} style={style}>
+<div class:list={['artwork-frame', { 'has-crop': !!crop, 'artwork-frame--cream-wood': frameStyle === 'creamWood', 'artwork-frame--crimson-wood': frameStyle === 'crimsonWood', 'artwork-frame--navy-wood': frameStyle === 'navyWood', 'artwork-frame--green': frameStyle === 'green', 'artwork-frame--navy-cream': frameStyle === 'navyCream', 'artwork-frame--dark-green': frameStyle === 'darkGreen', 'artwork-frame--cocoa-brown': frameStyle === 'cocoaBrown', 'artwork-frame--cocoa-brown-wide': frameStyle === 'cocoaBrownWide', 'artwork-frame--leaf-green-wide': frameStyle === 'leafGreenWide', 'artwork-frame--off-white-wood-wide': frameStyle === 'offWhiteWoodWide', 'artwork-frame--purple-cream': frameStyle === 'purpleCream', 'artwork-frame--white-green-wood': frameStyle === 'whiteGreenWood' }]} style={style}>
   <div class="artwork-frame__opening"><slot /></div>
 </div>
