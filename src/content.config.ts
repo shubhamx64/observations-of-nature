@@ -15,7 +15,7 @@ const artwork = defineCollection({
       width: z.number().int().positive(),
       height: z.number().int().positive(),
     }).optional(),
-    frameStyle: z.enum(['wood', 'creamWood', 'crimsonWood', 'navyWood', 'green', 'navyCream', 'darkGreen', 'cocoaBrown', 'cocoaBrownWide', 'purpleCream', 'whiteGreenWood']).default('wood'),
+    frameStyle: z.enum(['wood', 'creamWood', 'crimsonWood', 'navyWood', 'green', 'navyCream', 'darkGreen', 'cocoaBrown', 'cocoaBrownWide', 'leafGreenWide', 'purpleCream', 'whiteGreenWood']).default('wood'),
     alt: z.string().min(1).optional(),
     year: z.union([z.string(), z.number()]).optional(),
     medium: z.string().optional(),
