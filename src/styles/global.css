@@ -138,6 +138,8 @@
   .artwork-frame--white-green-wood::before, .artwork-frame--white-green-wood::after { content: ''; position: absolute; z-index: 2; border: max(2px, calc(var(--frame-rail) * .055)) solid #b1d0a4; box-shadow: inset 0 0 0 1px #deebd4, 0 0 0 1px #91ad85; pointer-events: none; }
   .artwork-frame--white-green-wood::before { inset: calc(var(--frame-rail) * .16); }
   .artwork-frame--white-green-wood::after { inset: calc(var(--frame-rail) * .77); }
+  .artwork-frame--black-circle-wood { --frame-rail: clamp(12px, 2.6vw, 24px); --wood-light: #454442; --wood-mid: #292827; --wood-deep: #0d0d0d; --wood-accent: #363534; --wood-shadow: #151515; --wood-edge: #222120; --wood-grain: rgb(255 255 255 / .1); --wood-inlay: #777571; --wood-highlight: rgb(255 255 255 / .42); border-radius: 50%; overflow: hidden; }
+  .artwork-frame--black-circle-wood .artwork-frame__opening { border-radius: 50%; overflow: hidden; }
   .artwork-frame__opening { width: 100%; padding: var(--frame-mat); background: var(--mat-color, #eeece4); box-shadow: 0 0 0 1px rgb(53 36 21 / .35); }
   .artwork-frame__opening img { width: 100%; }
   .artwork-frame.has-crop .artwork-frame__opening { position: relative; overflow: hidden; aspect-ratio: var(--frame-ratio); }
