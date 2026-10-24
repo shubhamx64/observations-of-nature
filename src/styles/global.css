@@ -140,8 +140,9 @@
   .artwork-frame--white-green-wood::after { inset: calc(var(--frame-rail) * .77); }
   .artwork-frame--black-circle-wood { --frame-rail: clamp(12px, 2.6vw, 24px); --wood-light: #454442; --wood-mid: #292827; --wood-deep: #0d0d0d; --wood-accent: #363534; --wood-shadow: #151515; --wood-edge: #222120; --wood-grain: rgb(255 255 255 / .1); --wood-inlay: #777571; --wood-highlight: rgb(255 255 255 / .42); border-radius: 50%; overflow: hidden; }
   .artwork-frame--black-circle-wood .artwork-frame__opening { border-radius: 50%; overflow: hidden; }
-  .artwork-frame--black-circle-cream { --frame-rail: clamp(8px, 6.2cqi, 56px); --frame-mat: clamp(8px, 7.8cqi, 72px); --mat-color: #f4f0e6; --wood-light: #454442; --wood-mid: #292827; --wood-deep: #0d0d0d; --wood-accent: #363534; --wood-shadow: #151515; --wood-edge: #222120; --wood-grain: rgb(255 255 255 / .1); --wood-inlay: #777571; --wood-highlight: rgb(255 255 255 / .42); border-radius: 50%; overflow: hidden; }
+  .artwork-frame--black-circle-cream { --frame-rail: clamp(8px, 6.2cqi, 56px); --frame-mat: clamp(8px, 7.8cqi, 72px); --mat-color: #f8f7f2; --wood-light: #454442; --wood-mid: #292827; --wood-deep: #0d0d0d; --wood-accent: #363534; --wood-shadow: #151515; --wood-edge: #222120; --wood-grain: rgb(255 255 255 / .1); --wood-inlay: #777571; --wood-highlight: rgb(255 255 255 / .42); border-radius: 50%; overflow: hidden; }
   .artwork-frame--black-circle-cream .artwork-frame__opening { border-radius: 50%; overflow: hidden; }
+  .artwork-frame--black-circle-cream .artwork-frame__opening img { display: block; border-radius: 50%; }
   .artwork-frame__opening { width: 100%; padding: var(--frame-mat); background: var(--mat-color, #eeece4); box-shadow: 0 0 0 1px rgb(53 36 21 / .35); }
   .artwork-frame__opening img { width: 100%; }
   .artwork-frame.has-crop .artwork-frame__opening { position: relative; overflow: hidden; aspect-ratio: var(--frame-ratio); }
