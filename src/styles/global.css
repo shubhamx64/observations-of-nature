@@ -131,6 +131,7 @@
   .artwork-frame--off-white-wood-wide::before, .artwork-frame--off-white-wood-wide::after { content: ''; position: absolute; z-index: 2; border: max(1px, calc(var(--frame-rail) * .01)) solid #304d70; box-shadow: 0 0 0 1px rgb(255 255 255 / .72); pointer-events: none; }
   .artwork-frame--off-white-wood-wide::before { inset: calc(var(--frame-rail) * .18); }
   .artwork-frame--off-white-wood-wide::after { inset: calc(var(--frame-rail) * .82); }
+  .artwork-frame--purple-wood { --frame-rail: clamp(10px, 1.6vw, 18px); --wood-light: #9879aa; --wood-mid: #684a7d; --wood-deep: #35243f; --wood-accent: #805f95; --wood-shadow: #45314f; --wood-edge: #604873; --wood-grain: rgb(239 220 248 / .14); --wood-inlay: #b59cbd; --wood-highlight: rgb(245 232 252 / .6); }
   .artwork-frame--purple-cream { --frame-mat: clamp(14px, 4vw, 44px); --mat-color: #f4eddf; --wood-light: #9277a7; --wood-mid: #6c527f; --wood-deep: #382844; --wood-accent: #795f8d; --wood-shadow: #44304f; --wood-edge: #624875; --wood-grain: rgb(238 225 249 / .12); --wood-inlay: #cbb999; --wood-highlight: rgb(245 232 212 / .5); }
   .artwork-frame--dull-purple-cream-wide { --frame-rail: clamp(10px, 14.5cqi, 145px); --frame-mat: clamp(8px, 1.2cqi, 16px); --mat-color: #f4eddf; --wood-light: #a99bb1; --wood-mid: #85778e; --wood-deep: #514758; --wood-accent: #9788a0; --wood-shadow: #5c5064; --wood-edge: #786a82; --wood-grain: rgb(242 230 247 / .12); --wood-inlay: #d0c4ac; --wood-highlight: rgb(245 234 213 / .58); }
   .artwork-image .artwork-frame--purple-cream { --frame-mat: clamp(7px, 1vw, 13px); }
