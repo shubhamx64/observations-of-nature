@@ -3,6 +3,7 @@
 # Title supplied by the artist.
 title: "Pink flowers in bloom"
 image: "../../assets/artwork/pink-flowers-in-bloom.jpg"
+alt: "Pink flowers in bloom."
 frameStyle: leafGreenWide
 category: "Flowers"
 displayOrder: 360
